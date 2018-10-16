@@ -32,23 +32,23 @@ function ricarica() {
 	request.get(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			//console.log(json[11].nome_abbr);
-			//console.log(json[11].valore); 
-			
+			var i;
+			for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
+			//console.log(json[i].nome_abbr);
+			//console.log(json[i].valore); 
 			app.use(function(req, res, next) {
 				res.header("Access-Control-Allow-Origin", "*");
 				res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 				next();
 			});
 			
-			app.get('/valore', function(req, res){
-			  res.json({ livello: json[11].valore }); 
+			app.get('/valore', function(req, res, next){
+			  res.json({ livello: json[i].valore }); 
 			});		
 		}
 	});
 }
 app.listen(3000);
 
-setInterval(function() {
-  ricarica();
-}, 600000);
+ 
+ricarica();
