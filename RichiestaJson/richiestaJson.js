@@ -54,7 +54,7 @@ function ricarica() {
 }
 app.listen(3000);
 
- 
+var schedule = require('node-schedule');
 let startTime = new Date(Date.now());
 let endTime = new Date(startTime.getTime() + 600000);
 var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){
