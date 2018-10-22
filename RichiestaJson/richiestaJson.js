@@ -55,4 +55,8 @@ function ricarica() {
 app.listen(3000);
 
  
-ricarica();
+let startTime = new Date(Date.now());
+let endTime = new Date(startTime.getTime() + 600000);
+var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){
+  ricarica();
+});
