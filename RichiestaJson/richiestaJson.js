@@ -36,8 +36,8 @@ async function ricarica() {
 				var json = JSON.parse(body);
 				var i;
 				for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
-				console.log(json[i].nome_abbr);
-				//console.log(json[i].valore); 
+				//console.log(json[i].nome_abbr);
+				console.log(json[i].valore); 
 
 				app.use(function(req, res, next) {
 					res.header("Access-Control-Allow-Origin", "*");
