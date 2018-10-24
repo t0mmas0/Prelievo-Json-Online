@@ -38,13 +38,16 @@ async function ricarica() {
 					
 					next();
 				});
+				var json;
+			var i;
 	while(true){
 		app.get('/valore', function(req, res, next){
+			
 					console.log("Updating");
 			request.get(url, function (error, response, body) {
 				if (!error && response.statusCode == 200) {
-					var json = JSON.parse(body);
-					var i;
+					 json= JSON.parse(body);
+					
 					for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
 					//console.log(json[i].nome_abbr);
 					console.log(json[i].valore); 
