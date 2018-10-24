@@ -29,8 +29,7 @@ function sleep(ms){
     })
 }
 async function ricarica() {
-	while(true){
-		app.use(function(req, res, next) {
+	app.use(function(req, res, next) {
 					res.header("Access-Control-Allow-Origin", "*");
 					res.header("Access-Control-Allow-Headers", "Accept, Content-Type, If-None-Match, X-If-None-Match");
 					res.header("Access-Control-Expose-Headers", "Location, Warning, Etag");
@@ -39,6 +38,8 @@ async function ricarica() {
 					
 					next();
 				});
+	while(true){
+		
 		request.get(url, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				var json = JSON.parse(body);
@@ -52,7 +53,8 @@ async function ricarica() {
 				app.get('/valore', function(req, res, next){
 					console.log("Updating");
 				  res.json({ livello: json[i].valore }); 
-				});		
+				});	
+				console.log("fine update");
 			}
 		});
 		await sleep(5000);
