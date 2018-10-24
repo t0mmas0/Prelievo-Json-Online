@@ -11,6 +11,7 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var request = require('request');
+var schedule = require('node-schedule');
 var url = 'http://dati.venezia.it/sites/default/files/dataset/opendata/livello.json';
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -54,9 +55,9 @@ function ricarica() {
 }
 app.listen(3000);
 
-var schedule = require('node-schedule');
-let startTime = new Date(Date.now());
+ let startTime = new Date(Date.now());
 let endTime = new Date(startTime.getTime() + 600000);
-var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/10 * * * * *' }, function(){
+var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '* * * * *' }, function(){
+	
   ricarica();
 });
