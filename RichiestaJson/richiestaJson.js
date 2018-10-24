@@ -43,14 +43,14 @@ async function ricarica() {
 	while(true){
 		app.get('/valore', function(req, res, next){
 			
-					console.log("Updating");
+					//console.log("Updating");
 			request.get(url, function (error, response, body) {
 				if (!error && response.statusCode == 200) {
 					 json= JSON.parse(body);
 					
 					for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
 					//console.log(json[i].nome_abbr);
-					console.log(json[i].valore); 
+					//console.log(json[i].valore); 
 
 					
 					
@@ -60,7 +60,7 @@ async function ricarica() {
 			});
 		res.json({ livello: json[i].valore }); 
 				});	
-				console.log("fine update");
+				//console.log("fine update");
 		await sleep(5000);
 	}
 }
