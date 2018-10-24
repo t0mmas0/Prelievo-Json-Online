@@ -50,6 +50,7 @@ async function ricarica() {
 				
 				
 				app.get('/valore', function(req, res, next){
+					console.log("Updating");
 				  res.json({ livello: json[i].valore }); 
 				});		
 			}
