@@ -54,7 +54,7 @@ async function ricarica() {
 				});		
 			}
 		});
-		await sleep(120000);
+		await sleep(20000);
 	}
 }
 app.listen(3000);
