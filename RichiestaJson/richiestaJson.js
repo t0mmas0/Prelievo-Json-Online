@@ -37,6 +37,8 @@ function ricarica() {
 			for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
 			//console.log(json[i].nome_abbr);
 			//console.log(json[i].valore); 
+						  console.log("attibuisco i permessi");
+
 			app.use(function(req, res, next) {
 				res.header("Access-Control-Allow-Origin", "*");
 				res.header("Access-Control-Allow-Headers", "Accept, Content-Type, If-None-Match, X-If-None-Match");
@@ -49,6 +51,7 @@ function ricarica() {
 			
 			app.get('/valore', function(req, res, next){
 			  res.json({ livello: json[i].valore }); 
+			  console.log("ricarico dal server");
 			});		
 		}
 	});
@@ -58,6 +61,7 @@ app.listen(3000);
  let startTime = new Date(Date.now());
 let endTime = new Date(startTime.getTime() + 600000);
 var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '* * * * *' }, function(){
-	
+			  console.log("Ricarica");
+
   ricarica();
 });
