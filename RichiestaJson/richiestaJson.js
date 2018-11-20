@@ -46,15 +46,13 @@ async function ricarica() {
 					//console.log("Updating");
 			request.get(url, function (error, response, body) {
 				if (!error && response.statusCode == 200) {
+					if(body){
 					 json= JSON.parse(body);
 					
-					for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
-					//console.log(json[i].nome_abbr);
-					//console.log(json[i].valore); 
-
-					
-					
-					
+						for(i = 0; i< json.length && json[i].nome_abbr != "PS_Giud" ; i++);
+						//console.log(json[i].nome_abbr);
+						//console.log(json[i].valore); 
+					}	
 					  
 				}
 			});
